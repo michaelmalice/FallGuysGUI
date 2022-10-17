@@ -129,11 +129,11 @@ def addWinner():
 		replacement = replacementEntry.get()
 		image = PhotoImage(file='./' + winner + '.png')
 		winnerImageDict[winner] = image
-		Button(frame, image=image).grid(column=7, row=winnerRow, padx=20, pady=2)
+		Button(frame, bg='yellow', image=image).grid(column=7, row=winnerRow, padx=20, pady=2)
 		image = PhotoImage(file='./' + replacement + '.png')
 		replacementImageDict[replacement] = image
 		columnRowDict[replacement] = [columnRowDict[winner][0],columnRowDict[winner][1]]
-		Button(frame, image=image, command=lambda replacement=replacement: changePicture(replacement)).grid(column=columnRowDict[winner][0], row=columnRowDict[winner][1], padx=20, pady=2)
+		Button(frame, bg='yellow', image=image, command=lambda replacement=replacement: changePicture(replacement)).grid(column=columnRowDict[winner][0], row=columnRowDict[winner][1], padx=20, pady=2)
 		for button in loserButtonDict:
 			loserButtonDict[button].grid_remove()
 		loserImageDict.clear()
@@ -151,13 +151,13 @@ for i in range(5):
 	for j in range(1,13):
 		image = PhotoImage(file='./' + players[playerIndex] + '.png')
 		imageDict[players[playerIndex]] = image
-		button = Button(frame, image=image, command=lambda playerIndex=playerIndex: changePicture(players[playerIndex]))
+		button = Button(frame, bg='yellow', image=image, command=lambda playerIndex=playerIndex: changePicture(players[playerIndex]))
 		buttonDict[players[playerIndex]] = button
 		button.grid(column=i, row=j, padx=20, pady=2)
 		columnRowDict[players[playerIndex]] = [i,j]
 		playerIndex = playerIndex + 1
 Label(frame, text="").grid(column=6,padx=345)
-Label(frame, text="Enter winner here", font=("Arial", 25)).grid(column=6, row=5)
+winnerLabel = Label(frame, text="Enter winner here", font=("Arial", 25)).grid(column=6, row=5)
 winnerEntry = Entry(frame)
 winnerEntry.place(height=15, width=20)
 winnerEntry.grid(column=6, row=6)
